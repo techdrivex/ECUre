@@ -1,0 +1,328 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Light theme CSS variables */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f8fafc;
+    --bg-tertiary: #f1f5f9;
+    --text-primary: #0f172a;
+    --text-secondary: #334155;
+    --text-muted: #64748b;
+    --border-primary: #e2e8f0;
+    --border-secondary: #cbd5e1;
+    --accent-primary: #3b82f6;
+    --accent-secondary: #1d4ed8;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+  }
+
+  .dark {
+    /* Dark theme CSS variables */
+    --bg-primary: #0f172a;
+    --bg-secondary: #1e293b;
+    --bg-tertiary: #334155;
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #94a3b8;
+    --border-primary: #334155;
+    --border-secondary: #475569;
+    --accent-primary: #60a5fa;
+    --accent-secondary: #3b82f6;
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.3);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.4);
+  }
+
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-gray-50 text-gray-900 transition-colors duration-200;
+  }
+
+  .dark body {
+    @apply bg-dark-900 text-dark-100;
+  }
+  
+  * {
+    @apply border-gray-200 transition-colors duration-200;
+  }
+
+  .dark * {
+    @apply border-dark-700;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary-600 text-white hover:bg-primary-700 focus-visible:ring-primary-500 shadow-md hover:shadow-lg transform hover:-translate-y-0.5;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary-100 text-secondary-900 hover:bg-secondary-200 focus-visible:ring-secondary-500 shadow-sm hover:shadow-md;
+  }
+  
+  .btn-danger {
+    @apply btn bg-danger-600 text-white hover:bg-danger-700 focus-visible:ring-danger-500 shadow-md hover:shadow-lg;
+  }
+  
+  .btn-outline {
+    @apply btn border border-gray-300 bg-white text-gray-700 hover:bg-gray-50 focus-visible:ring-gray-500 shadow-sm hover:shadow-md;
+  }
+
+  .dark .btn-outline {
+    @apply border-dark-600 bg-dark-800 text-dark-200 hover:bg-dark-700 focus-visible:ring-dark-500;
+  }
+  
+  .btn-sm {
+    @apply h-8 px-3 text-xs;
+  }
+  
+  .btn-md {
+    @apply h-10 px-4 py-2;
+  }
+  
+  .btn-lg {
+    @apply h-12 px-8;
+  }
+  
+  .card {
+    @apply rounded-lg border bg-white shadow-sm transition-all duration-200 hover:shadow-md;
+  }
+
+  .dark .card {
+    @apply bg-dark-800 border-dark-700 shadow-dark-md hover:shadow-dark-lg;
+  }
+  
+  .card-header {
+    @apply flex flex-col space-y-1.5 p-6;
+  }
+  
+  .card-title {
+    @apply text-2xl font-semibold leading-none tracking-tight;
+  }
+
+  .dark .card-title {
+    @apply text-dark-100;
+  }
+  
+  .card-description {
+    @apply text-sm text-gray-500;
+  }
+
+  .dark .card-description {
+    @apply text-dark-400;
+  }
+  
+  .card-content {
+    @apply p-6 pt-0;
+  }
+  
+  .card-footer {
+    @apply flex items-center p-6 pt-0;
+  }
+  
+  .input {
+    @apply flex h-10 w-full rounded-md border border-gray-300 bg-white px-3 py-2 text-sm ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-all duration-200;
+  }
+
+  .dark .input {
+    @apply border-dark-600 bg-dark-800 text-dark-100 placeholder:text-dark-400 ring-offset-dark-800 focus-visible:ring-primary-400;
+  }
+  
+  .label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+  }
+
+  .dark .label {
+    @apply text-dark-200;
+  }
+  
+  .badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  .badge-primary {
+    @apply badge border-primary-200 bg-primary-100 text-primary-800;
+  }
+
+  .dark .badge-primary {
+    @apply border-primary-800 bg-primary-900 text-primary-200;
+  }
+  
+  .badge-secondary {
+    @apply badge border-secondary-200 bg-secondary-100 text-secondary-800;
+  }
+
+  .dark .badge-secondary {
+    @apply border-dark-600 bg-dark-700 text-dark-200;
+  }
+  
+  .badge-success {
+    @apply badge border-success-200 bg-success-100 text-success-800;
+  }
+
+  .dark .badge-success {
+    @apply border-success-800 bg-success-900 text-success-200;
+  }
+  
+  .badge-warning {
+    @apply badge border-warning-200 bg-warning-100 text-warning-800;
+  }
+
+  .dark .badge-warning {
+    @apply border-warning-800 bg-warning-900 text-warning-200;
+  }
+  
+  .badge-danger {
+    @apply badge border-danger-200 bg-danger-100 text-danger-800;
+  }
+
+  .dark .badge-danger {
+    @apply border-danger-800 bg-danger-900 text-danger-200;
+  }
+
+  /* Dark mode specific components */
+  .dark-mode-toggle {
+    @apply fixed bottom-6 right-6 z-50 p-3 rounded-full bg-white shadow-lg border border-gray-200 hover:shadow-xl transition-all duration-200 cursor-pointer;
+  }
+
+  .dark .dark-mode-toggle {
+    @apply bg-dark-800 border-dark-600 shadow-dark-lg hover:shadow-dark-xl;
+  }
+
+  .theme-transition {
+    @apply transition-all duration-300 ease-in-out;
+  }
+
+  /* Enhanced card hover effects */
+  .card-hover {
+    @apply transform transition-all duration-200 hover:scale-[1.02] hover:shadow-lg;
+  }
+
+  .dark .card-hover {
+    @apply hover:shadow-dark-xl;
+  }
+
+  /* Glass morphism effect */
+  .glass {
+    @apply bg-white/80 backdrop-blur-sm border border-white/20;
+  }
+
+  .dark .glass {
+    @apply bg-dark-800/80 border-dark-600/20;
+  }
+
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-br from-primary-500 to-primary-700;
+  }
+
+  .gradient-dark {
+    @apply bg-gradient-to-br from-dark-800 to-dark-950;
+  }
+
+  /* Animated borders */
+  .border-animated {
+    @apply relative overflow-hidden;
+  }
+
+  .border-animated::before {
+    @apply content-[''] absolute inset-0 bg-gradient-to-r from-primary-500 via-primary-600 to-primary-500 opacity-0 transition-opacity duration-300;
+  }
+
+  .border-animated:hover::before {
+    @apply opacity-100;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Dark mode utilities */
+  .dark\:bg-dark-900 {
+    @apply bg-dark-900;
+  }
+
+  .dark\:text-dark-100 {
+    @apply text-dark-100;
+  }
+
+  .dark\:border-dark-700 {
+    @apply border-dark-700;
+  }
+
+  /* Custom scrollbar for dark mode */
+  .dark .custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-dark-800;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-dark-600 rounded-full;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    @apply bg-dark-500;
+  }
+
+  /* Focus ring utilities */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+  }
+
+  .dark .focus-ring {
+    @apply focus:ring-offset-dark-900;
+  }
+
+  /* Animation utilities */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Responsive utilities */
+  .container-responsive {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Grid utilities */
+  .grid-auto-fit {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+
+  .grid-auto-fill {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
